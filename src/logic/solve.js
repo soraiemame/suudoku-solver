@@ -1,25 +1,26 @@
-function solve(board){
+export default function solve(board){
+    console.log(board)
     function check(){
-        const moto = [0,0,0,0,0,0,0,0,0];
         for(var i = 0;i < 9;i++){
-            var cnt = moto;
+            var cnt = [0,0,0,0,0,0,0,0,0];
             for(var j = 0;j < 9;j++){
-                cnt[board[i][j] - 1]++;
+                if(board[i][j] !== 0)cnt[board[i][j] - 1]++;
             }
             for(var j = 0;j < 9;j++)if(cnt[j] > 1)return false;
         }
         for(var i = 0;i < 9;i++){
-            var cnt = moto;
+            var cnt = [0,0,0,0,0,0,0,0,0];
             for(var j = 0;j < 9;j++){
-                cnt[board[j][i] - 1]++;
+                if(board[j][i] !== 0)cnt[board[j][i] - 1]++;
             }
             for(var j = 0;j < 9;j++)if(cnt[j] > 1)return false;
         }
-        for(var i = 0;i < i + 3;i += 3){
-            for(var j = 0;j < j + 3;j += 3){
-                var cnt = moto;
+        for(var i = 0;i < 9;i += 3){
+            for(var j = 0;j < 9;j += 3){
+                var cnt = [0,0,0,0,0,0,0,0,0];
                 for(var x = 0;x < 3;x++){
                     for(var y = 0;y < 3;y++){
+                        if(board[i + x][j + y] !== 0)
                         cnt[board[i + x][j + y] - 1]++;
                     }
                 }

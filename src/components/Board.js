@@ -1,5 +1,6 @@
 import React from "react";
 import Box from "./Box";
+import solve from "../logic/solve";
 
 export default class Board extends React.Component {
     board = [];
@@ -11,8 +12,11 @@ export default class Board extends React.Component {
         }
     }
     changeval = (row,col,after) => {
-        console.log(row,col,after);
         this.props.changeval(row,col,after);
+    }
+    get = () => {
+        console.log("hello")
+        console.log(solve(this.board));
     }
     render(){
         var view = [];
@@ -30,6 +34,7 @@ export default class Board extends React.Component {
                         { view }
                     </tbody>
                 </table>
+                <button onClick={() => this.get()}>solve it!</button>
             </div>
         );
     }
